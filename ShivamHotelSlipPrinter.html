@@ -1,384 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#123b35">
-    <title>Shivam Hotel - Guest Slip</title>
-    <style>
-        :root {
-            --green: #123b35;
-            --mint: #e8f2ef;
-            --ink: #172321;
-            --muted: #64736f;
-            --line: #d9e2df;
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        body {
-            margin: 0;
-            background: #f4f7f6;
-            color: var(--ink);
-            font: 15px system-ui, -apple-system, "Segoe UI", sans-serif
-        }
-
-        header {
-            background: var(--green);
-            color: white;
-            padding: 20px 16px
-        }
-
-        header h1 {
-            font-size: 22px;
-            margin: 0 0 4px
-        }
-
-        header p {
-            margin: 0;
-            color: #d4e5e0;
-            font-size: 13px
-        }
-
-        main {
-            max-width: 680px;
-            margin: 18px auto;
-            padding: 0 13px 30px
-        }
-
-        .card {
-            background: white;
-            border: 1px solid var(--line);
-            border-radius: 15px;
-            padding: 17px;
-            margin-bottom: 14px
-        }
-
-        h2 {
-            font-size: 17px;
-            margin: 0 0 14px
-        }
-
-        .hotel-details {
-            padding: 12px;
-            border-radius: 10px;
-            background: var(--mint);
-            line-height: 1.7
-        }
-
-        .hotel-details strong {
-            display: block;
-            font-size: 17px
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px
-        }
-
-        .full {
-            grid-column: 1/-1
-        }
-
-        label {
-            display: block;
-            font-size: 13px;
-            font-weight: 650;
-            margin-bottom: 6px
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd7d3;
-            border-radius: 9px;
-            font: inherit
-        }
-
-        input:focus {
-            outline: 2px solid #a7c9bf;
-            border-color: #5d9284
-        }
-
-        input[readonly] {
-            background: #f0f4f2;
-            color: #52615c
-        }
-
-        .buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 4px
-        }
-
-        button {
-            border: 0;
-            border-radius: 10px;
-            padding: 13px 10px;
-            font: 700 15px system-ui;
-            cursor: pointer
-        }
-
-        .primary {
-            background: var(--green);
-            color: white
-        }
-
-        .secondary {
-            background: var(--mint);
-            color: var(--green)
-        }
-
-        .note {
-            font-size: 12px;
-            line-height: 1.5;
-            color: var(--muted);
-            margin: 12px 2px 0
-        }
-
-        .status {
-            font-size: 12px;
-            color: #24704e;
-            min-height: 18px;
-            margin-top: 8px
-        }
-
-        @media(max-width:460px) {
-
-            .grid,
-            .buttons {
-                grid-template-columns: 1fr
-            }
-
-            .full {
-                grid-column: auto
-            }
-        }
-
-        /* ---------- Slip styling (media print ke BAHAR, taaki height naap sake) ---------- */
-        #printSlip {
-            display: none;
-            width: 80mm;
-            padding: 4mm 4mm 5mm;
-            color: #000;
-            background: #fff;
-            font: 12px Arial, sans-serif
-        }
-
-        .slip-title {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 800;
-            line-height: 1.2
-        }
-
-        .slip-address {
-            text-align: center;
-            font-size: 11px;
-            margin-top: 4px
-        }
-
-        .rule {
-            border-top: 1px dashed #000;
-            margin: 9px 0
-        }
-
-        .slip-heading {
-            text-align: center;
-            font-weight: 800;
-            font-size: 13px;
-            letter-spacing: .5px
-        }
-
-        .slip-row {
-            display: flex;
-            gap: 6px;
-            margin: 7px 0;
-            line-height: 1.3
-        }
-
-        .slip-label {
-            width: 36%;
-            font-weight: 700;
-            flex-shrink: 0
-        }
-
-        .slip-value {
-            width: 64%;
-            overflow-wrap: anywhere
-        }
-
-        .thanks {
-            text-align: center;
-            font-weight: 700;
-            margin-top: 12px;
-            font-size: 11px
-        }
-
-        /* ---------- Print ---------- */
-        @media print {
-
-            html,
-            body {
-                width: 80mm !important;
-                height: auto !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                background: #fff !important
-            }
-
-            header,
-            main {
-                display: none !important
-            }
-
-            #printSlip {
-                display: block !important;
-                position: static;
-                break-inside: avoid;
-                page-break-inside: avoid
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173c35">
+  <meta name="description" content="Create and print guest registration slips for Shivam Hotel in Raigarh, Chhattisgarh.">
+  <title>Guest Check-in · Shivam Hotel</title>
+  <style>
+    :root{color-scheme:light;--forest:#173c35;--forest-2:#24584e;--cream:#f7f5ef;--paper:#fffefa;--ink:#172622;--muted:#71807a;--line:#e4e7df;--sage:#eaf0e8;--gold:#c98a4b;--shadow:0 18px 50px rgba(24,47,40,.08)}
+    *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}button,input{font:inherit}button{cursor:pointer}.topbar{height:72px;background:var(--paper);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100vw - 1160px)/2))}.brand{display:flex;align-items:center;gap:12px}.brand-mark{width:38px;height:38px;background:var(--forest);color:#fff;border-radius:11px;display:grid;place-items:center;font:600 18px Georgia,serif}.brand-name{font:600 16px Georgia,serif;letter-spacing:.01em}.brand-location{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}.top-status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px}.status-dot{width:7px;height:7px;border-radius:50%;background:#69a37c}.page{max-width:1160px;margin:0 auto;padding:46px 24px 72px}.intro{margin-bottom:32px}.eyebrow{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin:0 0 9px}.intro h1{font:500 clamp(32px,4vw,44px)/1.12 Georgia,"Times New Roman",serif;letter-spacing:-.035em;margin:0;color:var(--forest)}.intro p{margin:10px 0 0;color:var(--muted);font-size:14px}.workspace{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(360px,.95fr);gap:24px;align-items:start}.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.form-panel{padding:27px}.section-heading{display:flex;align-items:center;gap:12px;margin-bottom:23px}.section-number{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--sage);color:var(--forest);font-size:12px;font-weight:700}.section-heading h2{font:500 20px Georgia,serif;margin:0;color:var(--forest)}.fields{display:grid;grid-template-columns:1fr 1fr;gap:17px 14px}.field.full{grid-column:1/-1}.field label{display:block;font-size:12px;font-weight:650;color:#384943;margin-bottom:7px}.required{color:#b96049}.field input{width:100%;height:45px;border:1px solid #dfe4dc;border-radius:9px;padding:0 12px;background:#fff;color:var(--ink);outline:none;transition:border-color .18s,box-shadow .18s}.field input::placeholder{color:#a4aea7}.field input:focus{border-color:#6d9587;box-shadow:0 0 0 3px rgba(79,128,109,.13)}.field input[readonly]{background:#f4f5f1;color:#627169}.field-hint{color:var(--muted);font-size:11px;margin:6px 0 0}.form-footer{border-top:1px solid var(--line);margin-top:24px;padding-top:20px}.actions{display:grid;grid-template-columns:1.15fr 1fr;gap:10px}.button{height:47px;border:0;border-radius:9px;font-size:13px;font-weight:650;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .15s,background .15s}.button:hover{transform:translateY(-1px)}.button-primary{background:var(--forest);color:white}.button-primary:hover{background:var(--forest-2)}.button-secondary{border:1px solid #dce3db;background:#fff;color:var(--forest)}.button-secondary:hover{background:var(--sage)}.button svg{width:16px;height:16px}.status{min-height:20px;margin:12px 2px 0;font-size:12px;color:#337653}.status.error{color:#b44c3c}.helper{display:flex;gap:9px;align-items:flex-start;color:var(--muted);font-size:11px;line-height:1.55;margin:16px 2px 0}.helper svg{width:15px;height:15px;flex:none;margin-top:1px;color:#929f95}.preview-panel{overflow:hidden;position:sticky;top:20px}.preview-header{padding:22px 24px 18px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.preview-title{font:500 18px Georgia,serif;color:var(--forest)}.preview-caption{font-size:11px;color:var(--muted);margin-top:3px}.paper-badge{font-size:10px;font-weight:700;color:var(--forest);background:var(--sage);padding:6px 9px;border-radius:99px;letter-spacing:.04em}.preview-stage{padding:27px 24px 24px;background:#f1f1eb;display:flex;justify-content:center;min-height:438px}.slip{width:min(100%,310px);align-self:flex-start;background:#fff;padding:25px 23px 23px;box-shadow:0 5px 22px rgba(21,34,28,.12);color:#171717;font:12px/1.45 Arial,sans-serif}.slip-hotel{text-align:center;font:bold 20px/1.15 Georgia,serif;letter-spacing:.035em}.slip-address{text-align:center;color:#454545;font-size:10px;margin-top:4px}.slip-divider{border-top:1px dashed #888;margin:16px 0}.slip-heading{text-align:center;font-weight:bold;font-size:11px;letter-spacing:.16em}.slip-row{display:grid;grid-template-columns:42% 58%;gap:4px;margin:9px 0;line-height:1.35}.slip-label{font-weight:bold}.slip-value{overflow-wrap:anywhere;color:#333}.slip-thanks{text-align:center;font-weight:bold;font-size:10px;margin-top:18px;letter-spacing:.04em}.preview-footer{padding:14px 22px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:7px;color:var(--muted);font-size:11px}.preview-footer svg{width:14px;height:14px;color:var(--forest-2)}#printSlip{display:none}
+    @media(max-width:800px){.page{padding-top:34px}.workspace{grid-template-columns:1fr}.preview-panel{position:static}.preview-stage{min-height:0}.topbar{height:64px}.preview-panel{order:2}}
+    @media(max-width:480px){.topbar{padding:0 17px}.page{padding:29px 15px 44px}.form-panel{padding:20px 17px}.preview-header{padding:18px}.fields{gap:14px 10px}.field input{height:43px}.actions{grid-template-columns:1fr}.button{height:46px}.preview-stage{padding:22px 14px}.slip{padding:22px 19px}.brand-location{font-size:10px}}
+    @media print{@page{margin:0}html,body{width:80mm!important;margin:0!important;padding:0!important;background:#fff!important}.topbar,.page{display:none!important}#printSlip{display:block!important;width:80mm;padding:4mm 4mm 5mm;color:#000;background:#fff;font:12px Arial,sans-serif;break-inside:avoid;page-break-inside:avoid}.slip-hotel{font:800 18px/1.2 Arial,sans-serif}.slip-address{font-size:11px}.slip-divider{border-color:#000;margin:9px 0}.slip-heading{font-size:13px;letter-spacing:.5px}.slip-row{display:flex;gap:6px;margin:7px 0;line-height:1.3}.slip-label{width:36%;flex-shrink:0}.slip-value{width:64%}.slip-thanks{margin-top:12px;font-size:11px}}
+  </style>
 </head>
-
 <body>
-    <header>
-        <h1>Guest Registration</h1>
-        <p>Shivam Hotel - Guest Slip Generator</p>
-    </header>
-    <main>
-        <section class="card">
-            <h2>Hotel Information</h2>
-            <div class="hotel-details"><strong>SHIVAM HOTEL</strong>Raigarh, Chhattisgarh<br>Contact: 77720 00111</div>
-        </section>
-        <section class="card">
-            <h2>Guest Information</h2>
-            <form id="guestForm" class="grid">
-                <div class="full"><label for="guestName">Guest Name *</label><input id="guestName" required
-                        autocomplete="name" placeholder="Enter guest full name"></div>
-                <div><label for="roomNumber">Room Number *</label><input id="roomNumber" required
-                        placeholder="e.g. 204"></div>
-                <div><label for="mobileNumber">Mobile Number</label><input id="mobileNumber" type="tel" inputmode="tel"
-                        autocomplete="tel" placeholder="Enter mobile number"></div>
-                <div><label for="checkInDate">Check-in Date</label><input id="checkInDate" type="date" readonly></div>
-                <div><label for="checkInTime">Check-in Time</label><input id="checkInTime" type="time" readonly></div>
-                <div><label for="checkOutDate">Check-out Date</label><input id="checkOutDate" type="date"></div>
-                <div><label for="guestCount">Number of Guests</label><input id="guestCount" type="number" min="1"
-                        value="1"></div>
-                <div class="full buttons">
-                    <button class="primary" type="button" id="printButton">Print Slip</button>
-                    <button class="secondary" type="button" id="pdfButton">Save as PDF</button>
-                </div>
-            </form>
-            <p class="note">Check-in date and time are filled automatically using this device's current date and time.
-                Select "Save as PDF", then choose "Save as PDF" in the browser print window.</p>
-            <div class="status" id="statusMessage" role="status" aria-live="polite"></div>
-        </section>
-        <section class="card">
-            <h2>Printing Instructions</h2>
-            <p class="note" style="margin:0">For an 80mm thermal printer, select the printer in the device print dialog
-                and choose an 80mm paper size if available. In the print window keep Margins: None and Scale: 100%.
-                To create a PDF, select "Save as PDF".</p>
-        </section>
-    </main>
-    <section id="printSlip" aria-hidden="true">
-        <div class="slip-title">SHIVAM HOTEL</div>
-        <div class="slip-address">Raigarh, Chhattisgarh</div>
-        <div class="slip-address">Contact: 77720 00111</div>
-        <div class="rule"></div>
-        <div class="slip-heading">GUEST DETAILS</div>
-        <div class="rule"></div>
-        <div class="slip-row">
-            <div class="slip-label">Guest Name</div>
-            <div class="slip-value" id="printGuestName"></div>
-        </div>
-        <div class="slip-row">
-            <div class="slip-label">Room Number</div>
-            <div class="slip-value" id="printRoomNumber"></div>
-        </div>
-        <div class="slip-row">
-            <div class="slip-label">Mobile</div>
-            <div class="slip-value" id="printMobileNumber"></div>
-        </div>
-        <div class="slip-row">
-            <div class="slip-label">Check-in Date</div>
-            <div class="slip-value" id="printCheckInDate"></div>
-        </div>
-        <div class="slip-row">
-            <div class="slip-label">Check-in Time</div>
-            <div class="slip-value" id="printCheckInTime"></div>
-        </div>
-        <div class="slip-row">
-            <div class="slip-label">Check-out Date</div>
-            <div class="slip-value" id="printCheckOutDate"></div>
-        </div>
-        <div class="slip-row">
-            <div class="slip-label">Number of Guests</div>
-            <div class="slip-value" id="printGuestCount"></div>
-        </div>
-        <div class="rule"></div>
-        <div class="thanks">THANK YOU AND HAVE A NICE STAY!</div>
-    </section>
-    <script>
-        const el = id => document.getElementById(id);
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark" aria-hidden="true">S</div><div><div class="brand-name">Shivam Hotel</div><div class="brand-location">Raigarh · Chhattisgarh</div></div></div>
+    <div class="top-status"><span class="status-dot" aria-hidden="true"></span>Guest services</div>
+  </header>
+  <main class="page">
+    <div class="intro"><p class="eyebrow">Front desk · Guest services</p><h1>Welcome your next guest.</h1><p>Enter guest details to prepare a registration slip for printing.</p></div>
+    <div class="workspace">
+      <section class="panel form-panel" aria-labelledby="guest-heading">
+        <div class="section-heading"><span class="section-number" aria-hidden="true">01</span><h2 id="guest-heading">Guest information</h2></div>
+        <form id="guestForm" novalidate>
+          <div class="fields">
+            <div class="field full"><label for="guestName">Guest name <span class="required" aria-label="required">*</span></label><input id="guestName" name="guestName" required autocomplete="name" placeholder="Enter guest full name"></div>
+            <div class="field"><label for="roomNumber">Room number <span class="required" aria-label="required">*</span></label><input id="roomNumber" name="roomNumber" required placeholder="e.g. 204"></div>
+            <div class="field"><label for="mobileNumber">Mobile number</label><input id="mobileNumber" name="mobileNumber" type="tel" inputmode="tel" autocomplete="tel" placeholder="Enter mobile number"></div>
+            <div class="field"><label for="checkInDate">Check-in date</label><input id="checkInDate" name="checkInDate" type="date" readonly aria-describedby="checkInHint"><p class="field-hint" id="checkInHint">Filled in automatically</p></div>
+            <div class="field"><label for="checkInTime">Check-in time</label><input id="checkInTime" name="checkInTime" type="time" readonly aria-label="Check-in time, filled automatically"></div>
+            <div class="field"><label for="checkOutDate">Check-out date</label><input id="checkOutDate" name="checkOutDate" type="date"></div>
+            <div class="field"><label for="guestCount">Number of guests</label><input id="guestCount" name="guestCount" type="number" min="1" max="99" value="1"></div>
+          </div>
+          <div class="form-footer">
+            <div class="actions">
+              <button class="button button-primary" type="button" id="printButton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 8V3h10v5M7 17H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M7 14h10v7H7z"/><path d="M17 11h.01"/></svg>Print guest slip</button>
+              <button class="button button-secondary" type="button" id="pdfButton"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v4h14v-4"/></svg>Save as PDF</button>
+            </div>
+            <p class="status" id="statusMessage" role="status" aria-live="polite"></p>
+            <p class="helper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>For PDF, choose “Save as PDF” in your browser’s print dialog. For a thermal printer, select 80 mm paper, no margins, and 100% scale.</p>
+          </div>
+        </form>
+      </section>
+      <section class="panel preview-panel" aria-labelledby="preview-heading">
+        <div class="preview-header"><div><div class="preview-title" id="preview-heading">Slip preview</div><div class="preview-caption">Updates as you enter guest details</div></div><span class="paper-badge">80 MM PAPER</span></div>
+        <div class="preview-stage"><div class="slip" id="slipPreview" aria-label="Live guest slip preview">
+          <div class="slip-hotel">SHIVAM HOTEL</div><div class="slip-address">Raigarh, Chhattisgarh</div><div class="slip-address">Contact: 77720 00111</div>
+          <div class="slip-divider"></div><div class="slip-heading">GUEST DETAILS</div><div class="slip-divider"></div>
+          <div class="slip-row"><div class="slip-label">Guest Name</div><div class="slip-value" data-preview="guestName">—</div></div>
+          <div class="slip-row"><div class="slip-label">Room Number</div><div class="slip-value" data-preview="roomNumber">—</div></div>
+          <div class="slip-row"><div class="slip-label">Mobile</div><div class="slip-value" data-preview="mobileNumber">Not provided</div></div>
+          <div class="slip-row"><div class="slip-label">Check-in Date</div><div class="slip-value" data-preview="checkInDate">—</div></div>
+          <div class="slip-row"><div class="slip-label">Check-in Time</div><div class="slip-value" data-preview="checkInTime">—</div></div>
+          <div class="slip-row"><div class="slip-label">Check-out Date</div><div class="slip-value" data-preview="checkOutDate">Not provided</div></div>
+          <div class="slip-row"><div class="slip-label">Number of Guests</div><div class="slip-value" data-preview="guestCount">1</div></div>
+          <div class="slip-divider"></div><div class="slip-thanks">THANK YOU AND HAVE A NICE STAY!</div>
+        </div></div>
+        <div class="preview-footer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 4.5 6v5c0 5 3.2 8.2 7.5 10 4.3-1.8 7.5-5 7.5-10V6L12 3Z"/><path d="m9 12 2 2 4-4"/></svg>Guest information stays in this browser</div>
+      </section>
+    </div>
+  </main>
+  <section id="printSlip" aria-hidden="true"><div class="slip-hotel">SHIVAM HOTEL</div><div class="slip-address">Raigarh, Chhattisgarh</div><div class="slip-address">Contact: 77720 00111</div><div class="slip-divider"></div><div class="slip-heading">GUEST DETAILS</div><div class="slip-divider"></div><div class="slip-row"><div class="slip-label">Guest Name</div><div class="slip-value" id="printGuestName"></div></div><div class="slip-row"><div class="slip-label">Room Number</div><div class="slip-value" id="printRoomNumber"></div></div><div class="slip-row"><div class="slip-label">Mobile</div><div class="slip-value" id="printMobileNumber"></div></div><div class="slip-row"><div class="slip-label">Check-in Date</div><div class="slip-value" id="printCheckInDate"></div></div><div class="slip-row"><div class="slip-label">Check-in Time</div><div class="slip-value" id="printCheckInTime"></div></div><div class="slip-row"><div class="slip-label">Check-out Date</div><div class="slip-value" id="printCheckOutDate"></div></div><div class="slip-row"><div class="slip-label">Number of Guests</div><div class="slip-value" id="printGuestCount"></div></div><div class="slip-divider"></div><div class="slip-thanks">THANK YOU AND HAVE A NICE STAY!</div></section>
+  <script>
+    const byId = id => document.getElementById(id);
+    const fields = ["guestName", "roomNumber", "mobileNumber", "checkInDate", "checkInTime", "checkOutDate", "guestCount"];
+    const getValue = (id, fallback = "Not provided") => byId(id).value.trim() || fallback;
 
-        function setAutomaticCheckIn() {
-            const now = new Date(), pad = n => String(n).padStart(2, "0");
-            el("checkInDate").value = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
-            el("checkInTime").value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
-        }
+    function setAutomaticCheckIn() {
+      const now = new Date();
+      const pad = number => String(number).padStart(2, "0");
+      byId("checkInDate").value = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+      byId("checkInTime").value = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+    }
 
-        function value(id, fallback = "Not provided") {
-            return el(id).value.trim() || fallback;
-        }
+    function updatePreview() {
+      fields.forEach(id => {
+        const target = document.querySelector(`[data-preview="${id}"]`);
+        if (target) target.textContent = getValue(id, id === "guestName" || id === "roomNumber" ? "—" : "Not provided");
+      });
+    }
 
-        // Slip ki asli height naap kar @page size set karta hai
-        function setPageHeight() {
-            const slip = el("printSlip");
-            slip.style.cssText = "display:block;position:absolute;visibility:hidden;left:-9999px;top:0";
-            const mm = slip.getBoundingClientRect().height * 25.4 / 96; // px -> mm
-            slip.style.cssText = "";
+    function prepareSlip() {
+      const name = getValue("guestName", "");
+      const room = getValue("roomNumber", "");
+      const status = byId("statusMessage");
+      if (!name || !room) {
+        status.classList.add("error");
+        status.textContent = "Please enter the guest name and room number before printing.";
+        (!name ? byId("guestName") : byId("roomNumber")).focus();
+        return false;
+      }
+      if (!byId("guestCount").value || Number(byId("guestCount").value) < 1 || Number(byId("guestCount").value) > 99) {
+        status.classList.add("error");
+        status.textContent = "Enter a guest count between 1 and 99.";
+        byId("guestCount").focus();
+        return false;
+      }
+      const printFields = {printGuestName:name,printRoomNumber:room,printMobileNumber:getValue("mobileNumber"),printCheckInDate:getValue("checkInDate"),printCheckInTime:getValue("checkInTime"),printCheckOutDate:getValue("checkOutDate"),printGuestCount:getValue("guestCount")};
+      Object.entries(printFields).forEach(([id, value]) => { byId(id).textContent = value; });
+      status.classList.remove("error");
+      status.textContent = "Your guest slip is ready.";
+      const slip = byId("printSlip");
+      slip.style.cssText = "display:block;position:absolute;visibility:hidden;left:-9999px;top:0";
+      const heightMm = slip.getBoundingClientRect().height * 25.4 / 96;
+      slip.style.cssText = "";
+      let pageStyle = byId("pageSizeStyle");
+      if (!pageStyle) { pageStyle = document.createElement("style"); pageStyle.id = "pageSizeStyle"; document.head.appendChild(pageStyle); }
+      pageStyle.textContent = `@page { size: 80mm ${Math.ceil(heightMm) + 3}mm; margin: 0 }`;
+      return true;
+    }
 
-            let tag = el("pageSizeStyle");
-            if (!tag) {
-                tag = document.createElement("style");
-                tag.id = "pageSizeStyle";
-                document.head.appendChild(tag);
-            }
-            tag.textContent = `@page { size: 80mm ${Math.ceil(mm) + 3}mm; margin: 0 }`;
-        }
-
-        function prepareSlip() {
-            const name = value("guestName", ""), room = value("roomNumber", "");
-            if (!name || !room) {
-                el("statusMessage").textContent = "Please enter the guest name and room number.";
-                return false;
-            }
-            el("printGuestName").textContent = name;
-            el("printRoomNumber").textContent = room;
-            el("printMobileNumber").textContent = value("mobileNumber");
-            el("printCheckInDate").textContent = value("checkInDate");
-            el("printCheckInTime").textContent = value("checkInTime");
-            el("printCheckOutDate").textContent = value("checkOutDate");
-            el("printGuestCount").textContent = value("guestCount");
-            el("statusMessage").textContent = "Guest slip is ready.";
-            setPageHeight();
-            return true;
-        }
-
-        el("printButton").addEventListener("click", () => { if (prepareSlip()) window.print(); });
-        el("pdfButton").addEventListener("click", () => { if (prepareSlip()) window.print(); });
-        window.addEventListener("afterprint", () => {
-            el("statusMessage").textContent = "Print window closed. You can enter the next guest's details.";
-        });
-        setAutomaticCheckIn();
-    </script>
+    fields.forEach(id => byId(id).addEventListener("input", updatePreview));
+    byId("printButton").addEventListener("click", () => { if (prepareSlip()) window.print(); });
+    byId("pdfButton").addEventListener("click", () => { if (prepareSlip()) window.print(); });
+    window.addEventListener("afterprint", () => { byId("statusMessage").textContent = "Print window closed. You can enter the next guest’s details."; });
+    setAutomaticCheckIn();
+    updatePreview();
+  </script>
 </body>
-
 </html>
